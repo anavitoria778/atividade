@@ -1,1 +1,40 @@
-.
+flutter build web
+git init
+git remote add origin https://github.com/seu-usuario/nome-do-repositorio.git
+git add build/web/*
+git commit -m "Adiciona aplicação Flutter com layout responsivo"
+git push origin main
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Layout Responsivo'),
+        ),
+        body: LayoutBuilder(
+          builder: (context, constraints) {
+            if (constraints.maxWidth < 600) {
+              return const Center(
+                child: Text('Tela pequena'),
+              );
+            } else {
+              return const Center(
+                child: Text('Tela grande'),
+              );
+            }
+          },
+        ),
+      ),
+    );
+  }
+}
